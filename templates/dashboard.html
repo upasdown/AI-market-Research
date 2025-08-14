@@ -1,0 +1,13 @@
+Monitoring Dashboard
+
+{% for kpi, value in kpi_data.items() %}
+{{ kpi }}: {{ value }}
+{% endfor %}
+Alerts
+
+{% if alerts %} {% for alert in alerts %}
+{{ alert }}
+{% endfor %} {% else %}
+Alles im grÃ¼nen Bereich âœ…
+
+{% endif %}
