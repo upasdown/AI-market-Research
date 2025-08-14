@@ -1,12 +1,58 @@
 
-{% for kpi, value in kpi_data.items() %}
-{{ kpi }}: {{ value }}
-{% endfor %}
-Alerts
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Monitoring Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+        }
+        .card {
+            background-color: #1c1c1e;
+            border: none;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        .card-title {
+            color: #00d8ff;
+        }
+        .alert-item {
+            color: #ff4c4c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-5">🚀 AI Monitoring Dashboard</h1>
 
-{% if alerts %} {% for alert in alerts %}
-{{ alert }}
-{% endfor %} {% else %}
-Alles im grÃ¼nen Bereich âœ…
+        <div class="row">
+            {% for kpi, value in kpi_data.items() %}
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5 class="card-title">{{ kpi }}</h5>
+                    <p class="display-6">{{ value }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-{% endif %}
+        <h2 class="mt-5">⚠️ Alerts</h2>
+        <ul class="list-group list-group-flush">
+            {% if alerts %}
+                {% for alert in alerts %}
+                <li class="list-group-item bg-transparent alert-item">{{ alert }}</li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item bg-transparent text-success">Alles im grünen Bereich ✅</li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>
