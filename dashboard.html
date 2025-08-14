@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Monitoring Dashboard</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .alert { color: red; font-weight: bold; }
+        .kpi { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Monitoring Dashboard</h1>
+    {% for kpi, value in kpi_data.items() %}
+        <div class="kpi"><strong>{{ kpi }}:</strong> {{ value }}</div>
+    {% endfor %}
+
+    <h2>Alerts</h2>
+    {% if alerts %}
+        {% for alert in alerts %}
+            <div class="alert">{{ alert }}</div>
+        {% endfor %}
+    {% else %}
+        <p>Alles im grünen Bereich ✅</p>
+    {% endif %}
+</body>
+</html>
